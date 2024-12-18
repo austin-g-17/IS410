@@ -3,11 +3,11 @@
 CREATE TABLE Player 
     (
         Player_ID       int      	NOT NULL,
-        Player_Name     varchar(25) NOT NULL,
-        Email           varchar(25) NOT NULL,
-        DOB             date     	NOT NULL,
-        Gender          varchar(1)  NOT NULL
-            CHECK (Gender IN ('M', 'F', 'O')),
+        Player_Name     varchar(25) 	NOT NULL,
+        Email           varchar(25) 	NOT NULL,
+        DOB             date      	NOT NULL,
+        Gender          varchar(1) 	NOT NULL
+        	CHECK (Gender IN ('M', 'F', 'O')),
         Phone           int     	NOT NULL,
         Banned          int     	NOT NULL,
         
@@ -16,9 +16,9 @@ CREATE TABLE Player
     
 CREATE TABLE Platform
 	(
-		Platform_ID    	int			NOT NULL,
+		Platform_ID    	int		NOT NULL,
 		Platform_Name   varchar(15)	NOT NULL,
-		Platform_Year	int			NOT NULL,
+		Platform_Year	int		NOT NULL,
 		Version_Number	varchar(5)	NOT NULL,
 		Support_Email	varchar(25)	NOT NULL,
 		
@@ -28,11 +28,11 @@ CREATE TABLE Platform
 CREATE TABLE Game
     (
         Game_ID         int			NOT NULL,
-        Game_Name       varchar(25)	NOT NULL,
-        Genre           varchar(15) NOT NULL,
-		Game_Year		int			NOT NULL,
-		Rating			varchar(5)	NOT NULL,
-		Platform_ID  	REFERENCES Platform(Platform_ID),
+        Game_Name       varchar(25)		NOT NULL,
+        Genre           varchar(15) 		NOT NULL,
+	Game_Year	int			NOT NULL,
+	Rating		varchar(5)		NOT NULL,
+	Platform_ID  	REFERENCES Platform(Platform_ID),
 
         PRIMARY KEY (Game_ID)
     );
@@ -40,7 +40,7 @@ CREATE TABLE Game
 CREATE TABLE Machine
     (
         Machine_ID      int			NOT NULL,
-        Last_Use        date		NOT NULL,
+        Last_Use        date			NOT NULL,
         Damaged         int			NOT NULL,
         Platform_ID     REFERENCES Platform(Platform_ID),
     
@@ -52,8 +52,8 @@ CREATE TABLE Userdata
         Account_ID      varchar(7)	NOT NULL,
         Username        varchar(10)	NOT NULL,
         Last_Login      date		NOT NULL,
-		Register_Year	int			NOT NULL,
-		Verified		varchar(1)	NOT NULL
+	Register_Year	int		NOT NULL,
+	Verified	varchar(1)	NOT NULL
 			CHECK (Verified IN ('Y', 'N')),
         Player_ID       REFERENCES Player(Player_ID),
         Platform_ID     REFERENCES Platform(Platform_ID),
